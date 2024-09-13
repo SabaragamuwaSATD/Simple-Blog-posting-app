@@ -13,20 +13,11 @@
             <button>Logout</button>
         </form>
     @else
-    <div style="border: 3px solid black">
-        <h2>Log In</h2>
-        <form action="/register" method="POST">
+        <h2>You're Not Log in</h2>
+        <form action="/login" method="GET">
             @csrf
-            <label for="email">Email</label>
-            <input name="email" type="text" placeholder="Email">
-            <label for="password">Password</label>
-            <input name="password" type="password" placeholder="Password">
             <button>Login</button>
         </form>
-        <form action="/register" method="GET">
-            @csrf
-            <button>Register</button>
-    </div>
     @endauth
     
 </body>

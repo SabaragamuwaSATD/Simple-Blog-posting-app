@@ -32,10 +32,10 @@
         }
         .form-container input {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         .form-container button {
             width: 100%;
@@ -43,36 +43,36 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #007BFF;
-            color: white;
         }
         .form-container .login-button {
-            background-color: #11803b;
+            background-color: #007BFF;
             color: white;
-            margin-top: 5px;
+            margin-top: 10px;
         }
-
+        .form-container .register-button {
+            background-color: #28A745;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    @csrf
     <div class="form-container">
-        <h2>Register</h2>
-        <form action="/register" method="POST">
+        <h2>Log In</h2>
+        <form action="/login" method="POST">
             @csrf
-            <label for="name">User Name</label>
-            <input name="name" type="text" placeholder="User Name">
-            <label for="email">Email</label>
-            <input name="email" type="text" placeholder="Email">
-            <label for="password">Password</label>
-            <input name="password" type="password" placeholder="Password">
-            <label for="cpassword">Confirm Password</label>
-            <input name="cpassword" type="password" placeholder="Confirm Password">
-            <button class="register-button" type="submit">Submit</button>
-        </form>
-        <form action="/login" method="GET">
-            @csrf
+            <div>
+                <label for="email">Email</label>
+                <input name="email" type="text" placeholder="Email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input name="password" type="password" placeholder="Password">
+            </div>
             <button type="submit" class="login-button">Login</button>
+        </form>
+        <form action="/register" method="GET">
+            @csrf
+            <button type="submit" class="register-button">Register</button>
         </form>
     </div>
 </body>
