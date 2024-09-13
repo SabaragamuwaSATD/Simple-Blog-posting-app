@@ -8,25 +8,29 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    //Note: Login function////////////////////////////////////////////////////////////////////////////
+
     public function Login(Request $request){
         $incomingFields = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if(auth()->attempt($incomingFields)){
-            return redirect('/');
+        if(auth()->attempt(['email'=>$incomingFields['email'], 'password'=> $incomingFields['password']])){
+            $request->session()->regenerate();
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        return redirect('/');
     }
+
+    //Note: Logout function///////////////////////////////////////////////////////////////////////////////////    
 
     public function Logout(){
         auth()->logout();
         return redirect('/');
     }
+
+    //Note: Register function////////////////////////////////////////////////////////////////////////////////    
 
     public function Register(Request $request){
         $incomingFields = $request->validate([
